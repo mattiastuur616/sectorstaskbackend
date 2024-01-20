@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+    <changeSet id="17-01-2024-18:25" author="mattuu">
+        <sql>
+            create table Main_sectors(
+                sector_id serial,
+                sector_name varchar(255) not null,
+                constraint pk_sector_id primary key (sector_id)
+            )
+        </sql>
+    </changeSet>
+    <changeSet id="17-01-2024-18:28" author="mattuu">
+        <sql>
+            create table Sub_sectors(
+                pair_id serial,
+                mother_sector varchar(255) not null,
+                sub_sector varchar(255) not null,
+                constraint pk_pair_id primary key (pair_id)
+            )
+        </sql>
+    </changeSet>
+    <changeSet id="17-01-2024-18:29" author="mattuu">
+        <sql>
+            create table User_selections(
+                selection_id serial,
+                user_name varchar(255) not null,
+                selected_sector varchar(255) not null,
+                agree_to_terms boolean,
+                constraint pk_selection_id primary key (selection_id)
+            )
+        </sql>
+    </changeSet>
+</databaseChangeLog>

@@ -19,6 +19,11 @@ public class MainSectorsService {
     private final MainSectorsRepository mainSectorsRepository;
     private final MainSectorMapper mainSectorsMapper;
 
+    /**
+     * Test string.
+     *
+     * @return list of main sector dto-s.
+     */
     @Transactional
     public List<MainSectorDto> getAllMainSectors() {
         List<MainSectorDto> mainSectorsDtoList = new ArrayList<>();

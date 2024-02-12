@@ -38,7 +38,7 @@ public class UserSelectionService {
         if (existingUserSelection.isPresent()) {
             return userSelectionMapper.userSelectionToUserSelectionDto(existingUserSelection.get());
         }
-        throw new SelectionNotFoundException("Selection was n ot found");
+        throw new SelectionNotFoundException("Selection was not found");
     }
 
     @Transactional

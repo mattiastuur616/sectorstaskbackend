@@ -2,6 +2,7 @@ package sectors.task.sectorstaskbackend.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+import sectors.task.sectorstaskbackend.dto.MainSectorDto;
 import sectors.task.sectorstaskbackend.dto.SubSectorDto;
 import sectors.task.sectorstaskbackend.exception.SectorNotFoundException;
 import sectors.task.sectorstaskbackend.model.SubSector;
@@ -24,6 +25,11 @@ public class SubSectorsController {
     @GetMapping("/subSector/{id}")
     public SubSectorDto getSubSectorById(@PathVariable Long id) throws SectorNotFoundException {
         return subSectorsService.getSubSectorById(id);
+    }
+
+    @GetMapping("/subSectors/{name}")
+    public List<MainSectorDto> getSubSectorsById(@PathVariable String name) {
+        return subSectorsService.getSubSectorsById(name);
     }
 
     @PostMapping("/addSubSector")

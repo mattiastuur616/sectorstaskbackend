@@ -34,4 +34,28 @@
             )
         </sql>
     </changeSet>
+    <changeSet id="07-02.2024-14:08" author="mattuu">
+        <sql>
+            create table Client_users(
+                sector_user_id serial,
+                first_name varchar(255) not null,
+                last_name varchar(255) not null,
+                email varchar(255) not null,
+                password varchar(500) not null,
+                constraint pk_sector_user_id primary key (sector_user_id)
+            )
+        </sql>
+    </changeSet>
+    <changeSet id="08.0202024-08:33" author="mattuu">
+        <sql>
+            alter table User_selections
+            add column sector_user_id int
+        </sql>
+    </changeSet>
+    <changeSet id="08.02.2024-08:36" author="mattuu">
+        <sql>
+            alter table User_selections
+            add constraint fk_sector_user_id_sector_user_id foreign key (sector_user_id) references Client_users(sector_user_id)
+        </sql>
+    </changeSet>
 </databaseChangeLog>

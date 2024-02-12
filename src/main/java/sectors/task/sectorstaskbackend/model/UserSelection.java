@@ -7,7 +7,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "user_selection")
+@Table(name = "user_selections")
 public class UserSelection {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,4 +22,8 @@ public class UserSelection {
 
     @Column(name = "agree_to_terms")
     private Boolean agreeToTerms;
+
+    @ManyToOne
+    @JoinColumn(name = "sector_user_id")
+    private ClientUser clientUser;
 }

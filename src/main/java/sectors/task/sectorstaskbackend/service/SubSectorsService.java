@@ -3,6 +3,7 @@ package sectors.task.sectorstaskbackend.service;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import sectors.task.sectorstaskbackend.dto.MainSectorDto;
 import sectors.task.sectorstaskbackend.dto.SubSectorDto;
 import sectors.task.sectorstaskbackend.exception.SectorNotFoundException;
 import sectors.task.sectorstaskbackend.mapper.SubSectorMapper;
@@ -35,6 +36,15 @@ public class SubSectorsService {
             return subSectorMapper.subSectorToSubSectorDto(existingSubSector.get());
         }
         throw new SectorNotFoundException("Sector was not found");
+    }
+
+    @Transactional
+    public List<MainSectorDto> getSubSectorsById(String sectorName) {
+        List<MainSectorDto> subSectorDtoList = new ArrayList<>();
+        for (SubSector subSector : subSectorsRepository.findByMotherSector(sectorName)) {
+            subSectorDtoList.add(new MainSectorDto(subSector.getPairId(), subSector.getSubSector()));
+        }
+        return subSectorDtoList;
     }
 
     @Transactional
